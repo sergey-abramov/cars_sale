@@ -12,6 +12,11 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+/**
+ * A class that opens a connection to the database and performs crud-methods within a transaction.
+ *
+ * @author Abramov Sergey
+ */
 @Repository
 @RequiredArgsConstructor
 public class CrudStore {
@@ -73,9 +78,8 @@ public class CrudStore {
     }
 
     public <T> T tx(Function<Session, T> command) {
-        Session session = sf.openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = sf.openSession()) {
             transaction = session.beginTransaction();
             T rsl = command.apply(session);
             transaction.commit();
@@ -85,8 +89,6 @@ public class CrudStore {
                 transaction.rollback();
             }
             throw e;
-        } finally {
-            session.close();
         }
     }
 }

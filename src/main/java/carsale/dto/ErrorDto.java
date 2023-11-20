@@ -3,7 +3,7 @@ package carsale.dto;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class AuthErrorDto {
+public class ErrorDto {
 
     private int status;
     private String message;

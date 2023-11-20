@@ -25,8 +25,6 @@ public class UserRepository {
 
     public Optional<User> findByLogin(String login) {
         return store.optional("from User where login = :uLogin",
-                User.class,
-                Map.of(
-                        "uLogin", login));
+                User.class, Map.of("uLogin", login));
     }
 }
