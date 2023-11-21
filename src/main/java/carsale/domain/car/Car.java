@@ -22,6 +22,9 @@ public class Car {
     @JoinColumn(name = "type_car_id")
     private TypeCar typeCar;
     @ManyToOne
+    @JoinColumn(name = "type_car_body_id")
+    private TypeCarBody body;
+    @ManyToOne
     @JoinColumn(name = "type_engine_id")
     private TypeEngine typeEngine;
     @OneToOne(mappedBy = "car")

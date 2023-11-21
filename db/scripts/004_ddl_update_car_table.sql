@@ -1,0 +1,1 @@
+alter table car add column type_car_body_id int references type_car_body(id) not null;

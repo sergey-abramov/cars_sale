@@ -1,0 +1,1 @@
+insert into post_user(login, password, user_zone) values('user@email.com', 'qwerty', 'Europe/Moscow');
