@@ -1,0 +1,1 @@
+update post_user SET password = '$2a$10$kVLq6GFsGEJXvBCPz7kWI.MAAFIY6B.ty5uL2Yce./wtYufxcglrO' where id = 1;

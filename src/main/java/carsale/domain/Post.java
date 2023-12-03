@@ -38,6 +38,6 @@ public class Post {
     @JoinColumn(name = "post_history_id")
     private PostHistory history;
 
-    @OneToMany(mappedBy = "file")
+    @OneToMany(mappedBy = "post")
     private List<File> files = new ArrayList<>();
 }

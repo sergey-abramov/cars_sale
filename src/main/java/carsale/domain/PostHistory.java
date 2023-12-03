@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "post_history")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PostHistory {
@@ -17,7 +18,7 @@ public class PostHistory {
     @EqualsAndHashCode.Include
     private int id;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "history")
     private List<Post> posts = new ArrayList<>();
 
 }

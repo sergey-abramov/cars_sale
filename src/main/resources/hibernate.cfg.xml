@@ -14,14 +14,16 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="server.error.whitelabel.enabled">false</property>
 
-        <mapping class="domain.carsale.com.User" />
-        <mapping class="domain.carsale.com.Post" />
-        <mapping class="car.domain.carsale.com.Car" />
-        <mapping class="car.domain.carsale.com.Brand" />
-        <mapping class="car.domain.carsale.com.Owner" />
-        <mapping class="car.domain.carsale.com.CarDocs" />
-        <mapping class="car.domain.carsale.com.TypeCar" />
-        <mapping class="car.domain.carsale.com.TypeCarBody" />
-        <mapping class="car.domain.carsale.com.TypeEngine" />
+        <mapping class="carsale.domain.User" />
+        <mapping class="carsale.domain.Post" />
+        <mapping class="carsale.domain.File" />
+        <mapping class="carsale.domain.PostHistory" />
+        <mapping class="carsale.domain.car.Car" />
+        <mapping class="carsale.domain.car.Brand" />
+        <mapping class="carsale.domain.car.Owner" />
+        <mapping class="carsale.domain.car.CarDocs" />
+        <mapping class="carsale.domain.car.TypeCar" />
+        <mapping class="carsale.domain.car.TypeCarBody" />
+        <mapping class="carsale.domain.car.TypeEngine" />
     </session-factory>
 </hibernate-configuration>

@@ -85,10 +85,7 @@ public class CrudStore {
             transaction.commit();
             return rsl;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 }

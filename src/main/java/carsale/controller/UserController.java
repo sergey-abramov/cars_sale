@@ -1,6 +1,7 @@
 package carsale.controller;
 
 import carsale.domain.User;
+import carsale.service.AuthService;
 import carsale.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,11 +17,10 @@ import java.util.ArrayList;
 import java.util.TimeZone;
 
 @Controller
-@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final AuthService service;
 
     @GetMapping("/register")
     public String getRegistrationPage(Model model) {
@@ -35,8 +34,8 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute User user) {
-        var savedUser = userService.save(user);
-        return "redirect:/";
+        var savedUser = service.registration(user);
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -44,9 +43,11 @@ public class UserController {
         return "users/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login_page")
     public String loginUser(@ModelAttribute User user, Model model, HttpServletRequest request) {
-
+        var user1 = service.authentication(user);
+        request.getSession()
+                .setAttribute("remoteUser", user1);
         return "redirect:/";
     }
 

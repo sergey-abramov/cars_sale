@@ -24,17 +24,32 @@ public class PostRepository {
         }
     }
 
-    public Optional<Post> findById(Post post) {
+    public Optional<Post> findById(int id) {
         return store.optional("from Post where id = :pId",
-                Post.class, Map.of("pId", post.getId()));
+                Post.class, Map.of("pId", id));
     }
 
     public List<Post> findAll() {
         return store.query("from Post", Post.class);
     }
 
+    public List<Post> findAllByType(String typeCar) {
+        return store.query("from Post p where p.car.typeCar.name = :tName",
+                Post.class, Map.of("tName", typeCar));
+    }
+
+    public List<Post> findAllByBody(String bodyName) {
+        return store.query("from Post p where p.car.body.name = :bName",
+                Post.class, Map.of("bName", bodyName));
+    }
+
+    public List<Post> findAllByBrand(String brand) {
+        return store.query("from Post p where p.car.brand.name = :bName",
+                Post.class, Map.of("bName", brand));
+    }
+
     public boolean update(Post post) {
-        var postBefore = findById(post);
+        var postBefore = findById(post.getId());
         if (postBefore.isEmpty()) {
             throw new NullPointerException("Couldn't find the advert for sale");
         }

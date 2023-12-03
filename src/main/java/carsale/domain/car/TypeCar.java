@@ -18,6 +18,6 @@ public class TypeCar {
     private int id;
 
     private String name;
-    @OneToMany(mappedBy = "type_car")
+    @OneToMany(mappedBy = "typeCar")
     private List<TypeCarBody> typeCarBody = new ArrayList<>();
 }
